@@ -11,7 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { UsuariosComponent } from 'ionic-usuario-hoda5'
+import {} from 'h5-user'
+
  
 @NgModule({
   declarations: [
@@ -20,7 +21,6 @@ import { UsuariosComponent } from 'ionic-usuario-hoda5'
     ContactPage,
     HomePage,
     TabsPage,
-    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,6 @@ import { UsuariosComponent } from 'ionic-usuario-hoda5'
     ContactPage,
     HomePage,
     TabsPage,
-    UsuariosComponent
   ],
   providers: [
     StatusBar,
