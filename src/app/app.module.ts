@@ -11,7 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import {} from 'h5-user'
+import {UserModule, UserProvider} from 'ionic-ola-package'
 
  
 @NgModule({
@@ -24,7 +24,8 @@ import {} from 'h5-user'
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    UserModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,12 +33,13 @@ import {} from 'h5-user'
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}

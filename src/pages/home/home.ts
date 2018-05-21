@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {} from 'h5-user'
+
+import {UserProvider} from 'ionic-ola-package'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
-
+  usuarios;
+  constructor(public navCtrl: NavController, private userProvider: UserProvider) {
+    this.usuarios = this.userProvider.Usuarios();
   }
+
+
 
 }
