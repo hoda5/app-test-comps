@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { NavController } from 'ionic-angular/navigation/nav-controller';
 import AuthProvider = firebase.auth.AuthProvider;
+import { HomePage } from '../pages/home/home';
 
 @Injectable()
 export class AuthService {
-	private user: firebase.User;
+ 	private user: firebase.User;
 
-	constructor(public afAuth: AngularFireAuth) {
+	constructor(public afAuth: AngularFireAuth, private navCtrl: NavController) {
 		afAuth.authState.subscribe(user => {
 			this.user = user;
+			if(this.user) this.navCtrl.setRoot(HomePage)
 		});
 	}
 
@@ -17,12 +20,19 @@ export class AuthService {
 		console.log('Sign in with email');
 		return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
 			 credentials.password);
-    }
+	}
 
     signInWithGoogle() {
+		debugger
 		console.log('Sign in with google');
 		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
-}
+	}
+	
+	oauthCheckLogin(callback){
+		return firebase.auth().onAuthStateChanged(user => {
+			return callback(user.email)
+		}) 	
+	}
 
 private oauthSignIn(provider: AuthProvider) {
 	if (!(<any>window).cordova) {
@@ -44,6 +54,5 @@ private oauthSignIn(provider: AuthProvider) {
 		});
 	}
 }
-    
 
 }
