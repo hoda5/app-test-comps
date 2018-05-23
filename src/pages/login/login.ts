@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 import { AuthService } from '../../services/auth.service';
 
 // @IonicPage()
@@ -36,14 +36,14 @@ export class LoginPage {
 		};
 		this.auth.signInWithEmail(credentials)
 			.then(
-				() => this.navCtrl.setRoot(HomePage),
+				() => this.navCtrl.setRoot(TabsPage),
 				error => this.loginError = error.message
 			);
   }
   loginWithGoogle() {
     this.auth.signInWithGoogle()
       .then(
-        () => this.navCtrl.setRoot(HomePage),
+        () => this.navCtrl.setRoot(TabsPage),
         error => console.log(error.message)
       );
   }

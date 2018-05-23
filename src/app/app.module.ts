@@ -8,6 +8,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FIREBASE_CONFIG } from './firebase.credentials';
 import {AuthService} from '../services/auth.service'
 
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -36,7 +38,8 @@ import { FormsModule }   from '@angular/forms';
     FormsModule,
     IonicModule.forRoot(MyApp),
     UserModule,
-    AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

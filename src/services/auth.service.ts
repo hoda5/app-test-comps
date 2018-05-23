@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { NavController } from 'ionic-angular/navigation/nav-controller';
+import { Nav } from 'ionic-angular';
 import AuthProvider = firebase.auth.AuthProvider;
-import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Injectable()
 export class AuthService {
- 	private user: firebase.User;
+	 private user: firebase.User;
 
-	constructor(public afAuth: AngularFireAuth, private navCtrl: NavController) {
+	constructor(public afAuth: AngularFireAuth) {
 		afAuth.authState.subscribe(user => {
 			this.user = user;
-			if(this.user) this.navCtrl.setRoot(HomePage)
+			if(this.user) localStorage.setItem('emailUsuarioLogado', this.user.email)
 		});
 	}
 
@@ -23,7 +23,6 @@ export class AuthService {
 	}
 
     signInWithGoogle() {
-		debugger
 		console.log('Sign in with google');
 		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
 	}
@@ -32,6 +31,10 @@ export class AuthService {
 		return firebase.auth().onAuthStateChanged(user => {
 			return callback(user.email)
 		}) 	
+	}
+
+	usuarioLogado(){
+		return this.user;
 	}
 
 private oauthSignIn(provider: AuthProvider) {

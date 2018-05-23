@@ -9,10 +9,12 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
     </ion-item>
   </ion-list>
+
+  <ion-item *ngFor="let item of usuarios">
+    {{item.nome}}
+  </ion-item>
 </ion-content>
 
 
