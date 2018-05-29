@@ -1,7 +1,6 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { Nav } from 'ionic-angular';
 import AuthProvider = firebase.auth.AuthProvider;
 import { TabsPage } from '../pages/tabs/tabs';
 

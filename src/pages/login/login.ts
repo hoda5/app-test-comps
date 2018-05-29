@@ -14,7 +14,7 @@ export class LoginPage {
 	loginError: string;
 
 	constructor(
-		private navCtrl: NavController,
+		// private navCtrl: NavController,
 		private auth: AuthService,
 		fb: FormBuilder
 	) {
@@ -36,14 +36,16 @@ export class LoginPage {
 		};
 		this.auth.signInWithEmail(credentials)
 			.then(
-				() => this.navCtrl.setRoot(TabsPage),
+				() => 
+				// this.navCtrl.setRoot(TabsPage),
 				error => this.loginError = error.message
 			);
   }
   loginWithGoogle() {
     this.auth.signInWithGoogle()
       .then(
-        () => this.navCtrl.setRoot(TabsPage),
+				() => 
+				// this.navCtrl.setRoot(TabsPage),
         error => console.log(error.message)
       );
   }
